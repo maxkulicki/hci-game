@@ -5,12 +5,14 @@ class Obstacle
   float x; // single bar distance
   float y; // number of bars
  
+ 
   Obstacle( float ih, float iw, float ix, float iy) {
     h = ih;
     w = iw;
     x = ix;
     y = iy;
   }
+ 
  
   void move (float moveX, float moveY) {
     x+=moveX;
@@ -21,7 +23,8 @@ class Obstacle
      return x;
    }
  
-  void display() {    
+  void display() { 
+      fill(255, 0, 0);
       rect(x, y, h, w);
   }
 }
