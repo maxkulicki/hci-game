@@ -50,7 +50,7 @@ void showPlayer(){
 
 
 void newObstacle(){
-  ob.add(new Obstacle(OBSTACLE_SIZE, OBSTACLE_SIZE, width, random(0, height-OBSTACLE_SIZE)));
+  ob.add(new Coin(random(0, height)));
   obstNumber+=1;  
 }
   

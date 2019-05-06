@@ -1,15 +1,11 @@
-class Obstacle 
+abstract class Obstacle 
 {
-  float h; // rect height
-  float w ; // rect yposition
   float x; // single bar distance
   float y; // number of bars
  
  
-  Obstacle( float ih, float iw, float ix, float iy) {
-    h = ih;
-    w = iw;
-    x = ix;
+  Obstacle(float iy) {
+    x = width;
     y = iy;
   }
  
@@ -23,8 +19,5 @@ class Obstacle
      return x;
    }
  
-  void display() { 
-      fill(255, 0, 0);
-      rect(x, y, h, w);
-  }
+  abstract void display();
 }
