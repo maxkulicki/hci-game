@@ -13,15 +13,17 @@ boolean voiceControl;
 Minim minim;
 AudioInput in;
 
-final static float OBSTACLE_SIZE = 40;
+final static float OBSTACLE_SIZE = 80;
 final static float FALLING_SPEED = 4;
 float ROLLING_SPEED = -3;
-float OBST_FREQUENCY = 70; 
+float OBST_FREQUENCY = 70;
+float ACCELERATION = 0.2;
 
 final boolean[] KEYS = new boolean[255];
 
 int score=0;
 int counter=0;
+int time_passed=0;
 Queue<Obstacle> ob = new ArrayDeque(); 
 Player p = new Player(50, 50, 50, height);
 int obstNumber=0;
@@ -58,12 +60,13 @@ void draw(){
   if (gameHasStarted == true) {
   text(score,30,30);
   counter++;
+  time_passed++;
   if(counter==OBST_FREQUENCY)
   {
      counter=0;
      float obstacleKind=random(2);
      newObstacle(obstacleKind);
-     ROLLING_SPEED-=0.2;
+     ROLLING_SPEED-=ACCELERATION;
      if(OBST_FREQUENCY>20)
        OBST_FREQUENCY-=2;
      
@@ -133,7 +136,12 @@ void moveObstacles(){
               if (obstacle.getClass() == Coin.class)
                score+=1;
                else
+               {
+               print("score: " + score);
+               print(", time: ");
+               print(time_passed/60);
                exit();
+               }
              ob.remove(obstacle);
            }
       }
