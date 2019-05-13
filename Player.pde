@@ -24,6 +24,16 @@ class Player
  
   void display() {  
       fill(255);
+      if(shield>0)
+        fill(0, 255, 0);
       rect(x, y, h, w);
   }
+  
+  void die() {
+               print("score: " + score);
+               print(", time: ");
+               print(time_passed/60);
+               exit();
+  }
+  
 }

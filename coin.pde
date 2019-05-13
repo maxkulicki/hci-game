@@ -20,4 +20,7 @@ class Coin extends Obstacle
       fill(255, 255, 0);
       circle(super.x, y, r);
   }
+  void effect() {
+    score+=1;
+  }    
 }

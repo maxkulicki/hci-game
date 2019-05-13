@@ -22,4 +22,10 @@ class Block extends Obstacle
       fill(255, 0, 0);
       rect(super.x, y, h, w);
   }
+  void effect() {
+    if(shield>0)
+      score+=3;
+    else
+      p.die();
+  }
 }
