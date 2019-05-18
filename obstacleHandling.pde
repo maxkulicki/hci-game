@@ -1,12 +1,12 @@
 void newObstacle(float obstacleKind) {
   if (obstacleKind>96)
-    ob.add(new Buff(random(TOP, BOTTOM), BuffType.SHIELD));
+    ob.add(new Buff(random(TOP + BUFF_SIZE/2, BOTTOM - BUFF_SIZE/2), BuffType.SHIELD));
   else if (obstacleKind>94)
-    ob.add(new Buff(random(TOP, BOTTOM), BuffType.ANTIGRAVITY));
+    ob.add(new Buff(random(TOP + BUFF_SIZE/2, BOTTOM - BUFF_SIZE/2), BuffType.ANTIGRAVITY));
   else if (obstacleKind>90)
-    ob.add(new Buff(random(TOP, BOTTOM), BuffType.TIME_SLOW));
+    ob.add(new Buff(random(TOP + BUFF_SIZE/2, BOTTOM - BUFF_SIZE/2), BuffType.TIME_SLOW));
   else if (obstacleKind>60)
-    ob.add(new Coin(random(TOP, BOTTOM)));
+    ob.add(new Coin(random(TOP + COIN_SIZE/2, BOTTOM - COIN_SIZE/2)));
   else if (obstacleKind>45)
     ob.add(new MovinBlock(random(TOP, BOTTOM)));
   else if (obstacleKind>30)

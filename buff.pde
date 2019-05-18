@@ -1,4 +1,4 @@
-float BUFF_SIZE=25;
+float BUFF_SIZE=50;
 
 class Buff extends Obstacle
 {

@@ -1,4 +1,4 @@
-float COIN_SIZE=25;
+float COIN_SIZE=50;
 
 class Coin extends Obstacle
 {
