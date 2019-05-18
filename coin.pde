@@ -1,26 +1,29 @@
-float COIN_SIZE=35;
+float COIN_SIZE=25;
 
 class Coin extends Obstacle
 {
   float r; // radius
+  PImage icon;
 
   Coin( float ir, float iy) {
     super(iy);
+    icon = loadImage("Tokens/Token-02.png");
     r = ir;
   }
 
   Coin( float iy) {
     super(iy);
+    icon = loadImage("Tokens/Token-02.png");
     r = COIN_SIZE;
   }
 
   void display() { 
-    fill(255, 255, 0);
-    circle(super.x, y, r);
+    imageMode(CENTER);
+    image(icon, x, y);
   }
   
-   boolean detectCollision() {
-    if (p.x+(p.w/2) > x-r && p.x-(p.w/2) < x+r && p.y+(p.h/2) > y-r && p.y-(p.h/2) < y+r)
+ boolean detectCollision() {
+    if (p.x+(p.w/2) > x-(r/2) && p.x-(p.w/2) < x+(r/2) && p.y+(p.h/2) > y-(r/2) && p.y-(p.h/2) < y+(r/2))
       return true;
     return false;
   }

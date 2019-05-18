@@ -1,40 +1,44 @@
-float BUFF_SIZE=35;
+float BUFF_SIZE=25;
 
 class Buff extends Obstacle
 {
   float r; // radius
+  PImage icon;
   BuffType type;
 
   Buff( float iR, float iY, BuffType iType) {
     super(iY);
     r = iR;
     type = iType;
+    icon = getIcon();
   }
 
   Buff( float iy, BuffType iType) {
     super(iy);
     r = BUFF_SIZE;
     type = iType;
+    icon = getIcon();
   }
-
-  void display() { 
+  
+  PImage getIcon(){
     switch(type)
     {
     case SHIELD:
-      fill(0, 255, 0);
-      break;
+      return loadImage("Tokens/Token-01.png");
     case TIME_SLOW:
-      fill(0, 0, 255);
-      break;
-    case ANTIGRAVITY:
-      fill(255, 0, 255);
-      break;
-    }  
-    circle(super.x, y, r);
+      return loadImage("Tokens/Token-03.png");
+    default:
+      return loadImage("Tokens/Token-04.png");
+    } 
+  }
+
+  void display() {  
+    imageMode(CENTER);
+    image(icon, x, y);
   }
   
   boolean detectCollision() {
-    if (p.x+(p.w/2) > x-r && p.x-(p.w/2) < x+r && p.y+(p.h/2) > y-r && p.y-(p.h/2) < y+r)
+    if (p.x+(p.w/2) > x-(r/2) && p.x-(p.w/2) < x+(r/2) && p.y+(p.h/2) > y-(r/2) && p.y-(p.h/2) < y+(r/2))
       return true;
     return false;
   }
