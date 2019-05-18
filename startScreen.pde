@@ -1,7 +1,8 @@
 ControlP5 CP5;
 ControlFont font;
 PFont pfont;
-void startScreenSetup(){
+
+void startScreenSetup() {
   CP5 = new ControlP5(this);
   pfont = createFont("Arial", 10, true);
   font = new ControlFont(pfont, 10);
@@ -11,30 +12,30 @@ void startScreenSetup(){
     .setPosition(width/2-50, height/2-120)
     .setSize(100, 50)
     ;
-    textSize(70);
-  
+  textSize(70);
+
   CP5.addButton("keyboardButton")
     .setLabel("Keyboard Mode")
     .setFont(font)
     .setPosition(width/2-50, height/2-60)
     .setSize(100, 50)
     ;
-    textSize(70);
- 
+  textSize(70);
+
   CP5.addButton("storeButton")
     .setLabel("Store")
     .setFont(font)
     .setPosition(width/2-50, height/2)
     .setSize(100, 50)
     ;
-    textSize(70);    
-  
+  textSize(70);    
+
   CP5.addButton("fakeButton")
-    .setSize(0,0)
+    .setSize(0, 0)
     .setLabel("");
-    
+
   CP5.addButton("fakeButton2")
-    .setSize(0,0)
+    .setSize(0, 0)
     .setLabel("");
 
   textAlign(CENTER, CENTER);
@@ -55,7 +56,6 @@ public void voiceButton() {
   CP5.getController("voiceButton").remove();   // removes the button
   CP5.getController("keyboardButton").remove();   // removes the button
   CP5.getController("storeButton").remove();// removes the button
-
 } 
 
 public void storeButton() {
@@ -63,6 +63,4 @@ public void storeButton() {
   CP5.getController("voiceButton").remove();   // removes the button
   CP5.getController("storeButton").remove();// removes the button
   CP5.getController("keyboardButton").remove();   // removes the button
-
-
 } 

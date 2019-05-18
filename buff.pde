@@ -4,54 +4,56 @@ class Buff extends Obstacle
 {
   float r; // radius
   BuffType type;
- 
- 
+
   Buff( float iR, float iY, BuffType iType) {
-   super(iY);
-   r = iR;
-   type = iType;
+    super(iY);
+    r = iR;
+    type = iType;
   }
 
   Buff( float iy, BuffType iType) {
-   super(iy);
-   r = BUFF_SIZE;
-   type = iType;
+    super(iy);
+    r = BUFF_SIZE;
+    type = iType;
   }
 
- 
   void display() { 
     switch(type)
     {
-      case SHIELD:
-        fill(0, 255, 0);
-        break;
-      case TIME_SLOW:
-        fill(0, 0, 255);
-        break;
-      case ANTIGRAVITY:
-        fill(255, 0, 255);
-        break;
+    case SHIELD:
+      fill(0, 255, 0);
+      break;
+    case TIME_SLOW:
+      fill(0, 0, 255);
+      break;
+    case ANTIGRAVITY:
+      fill(255, 0, 255);
+      break;
     }  
-      circle(super.x, y, r);
+    circle(super.x, y, r);
   }
+  
+  boolean detectCollision() {
+    if (p.x+(p.w/2) > x-r && p.x-(p.w/2) < x+r && p.y+(p.h/2) > y-r && p.y-(p.h/2) < y+r)
+      return true;
+    return false;
+  }
+  
   void effect() {
     switch(type)
     {
-      case SHIELD:
-        shield+=200;
-        break;
-      case TIME_SLOW:
-        ROLLING_SPEED+=1.5;
-        break;
-      case ANTIGRAVITY:
-        antigravity+=300;
-         
-    }  
+    case SHIELD:
+      shield+=200;
+      break;
+    case TIME_SLOW:
+      ROLLING_SPEED+=1.5;
+      break;
+    case ANTIGRAVITY:
+      antigravity+=300;
+    }
+  }
 }
 
-
-}
-
-public enum BuffType{
+public enum BuffType {
   SHIELD, TIME_SLOW, ANTIGRAVITY
 }
