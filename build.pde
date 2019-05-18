@@ -2,11 +2,6 @@ import java.util.*;
 import ddf.minim.*;
 import controlP5.*; // the library we use for the start button
 
-ControlP5 cp5;
-ControlP5 cp6;
-ControlFont font;
-PFont pfont;
-
 boolean gameHasStarted = false;
 boolean voiceControl;
 //audio input
@@ -21,6 +16,9 @@ float ACCELERATION = 0.1;
 //keyboard control
 final boolean[] KEYS = new boolean[255];
 
+
+int money=0;
+
 int score=0;
 int counter=0;
 int time_passed=0; 
@@ -29,11 +27,13 @@ int antigravity=0;
 int gravity_direction=1;
 
 Queue<Obstacle> ob = new ArrayDeque(); 
+ArrayList<Button> buttonsDisplayed = new ArrayList<Button>();
 Player p = new Player(50, 50, 50, height);
 int obstNumber=0;
 
 
 void setup() { 
+  readMoney();
   size(600,400);
   startScreenSetup();
   //voice control
@@ -43,8 +43,16 @@ void setup() {
 
 void draw(){
   background(0);
+  textSize(26);
+  fill(255);
+  text("coins: "+money, 80, 30);
+  showButtons();
   if (gameHasStarted == true) {
+  background(0);
+  fill(255);
   text(score,30,30);
+  if(shield>0)
+  text(shield/30, width-30,30);
   counter++;
   time_passed++;
   if(shield>0)
@@ -76,6 +84,7 @@ void draw(){
   
   if(voiceControl){
     float voice=abs(in.right.get(1)*100);
+    voice = constrain(voice, 0, FALLING_SPEED*3);
       p.move((FALLING_SPEED - voice)*gravity_direction);  
   }
   else{
@@ -88,6 +97,8 @@ void draw(){
   p.display();  
   }
 }
+
+
 
 void keyPressed(){
   KEYS[keyCode] = true;

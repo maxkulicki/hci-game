@@ -1,7 +1,7 @@
 class Player 
 {
   float h; // rect height
-  float w ; // rect yposition
+  float w ; // rect width
   float x; // single bar distance
   float y; // number of bars
   float speed;
@@ -30,10 +30,13 @@ class Player
   }
   
   void die() {
-               print("score: " + score);
+               print("\nscore: " + score);
                print(", time: ");
                print(time_passed/60);
-               exit();
+               updateMoney();
+               gameHasStarted=false;
+               score=0;
+               startScreenSetup();
   }
   
 }

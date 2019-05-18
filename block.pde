@@ -17,6 +17,12 @@ class Block extends Obstacle
    h=50;
    w=50;
   }
+   boolean detectCollision(){
+    if(x+p.w>=p.x && x<=p.x+p.w && y+h>= p.y && y<=p.y + p.h)
+      return true;
+    return false;
+  };
+ 
  
   void display() { 
       fill(255, 0, 0);
